@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<style scoped>
+
+#back-white {
+        background-color: rgba(255, 255, 255, 0.96);
+        margin: 0;
+        /* background-color: wheat, opacity(0.99); */
+    }
+
+    #modal-content {
+
+        background: url(./back-c.svg);
+        /* background-color: gray; */
+        /* background: red; */
+        /* background-color: red; */
+        background-repeat: no-repeat;
+        background-size: cover;
+
+
+    }
+
+
+
+    #modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    #modal-content {
+        /* background-color: #fefefe; */
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    #closeModal {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+</style>
+
+<body>
+
+<link rel="import" href="import.html">
+<script>
+    var link = document.querySelector('link[rel=import]');
+    var content = link.import.querySelector('#import-comp');
+    document.body.appendChild(content.cloneNode(true));
+  </script>
+    
+    
+    <h1>Hello Modal Form Component</h1>
+    <p>Данная форма с модальным окном будет являться калькулятором 
+        для заказа торта
+        поля которые будут присутствовать:
+        <ul>
+            <li>Форма торта</li>
+            <li>Цвет</li>
+            <li>Надпись</li>
+            <li>Размер</li>
+            <li>Тип начинки</li>
+            <li>Вкус</li>
+        </ul>
+    </p>
+    <button id="openModal">Open Modal</button>
+
+
+
+    <div id="modal">
+
+
+            <div id="modal-content">
+                <div id="back-white">
+                <h2>Modal Title</h2>
+                <p>Modal Text</p>
+    
+                <label for="shape">Форма торта:</label>
+                <input type="radio" name="Форма торта" id="shape_1">Круглый
+                <input type="radio" name="Форма торта" id="shape_2">Квадратный
+                <input type="radio" name="Форма торта" id="shape_3">Ромбовидный
+    
+                <label for="color">Цвет:</label>
+                <select name="color" id="color">
+                    <option value="red">Красный</option>
+                    <option value="green">Зеленый</option>
+                    <option value="blue">Синий</option>
+                </select>
+    
+                <label for="text">Надпись:</label>
+                <input type="text" name="text" id="text">
+    
+                <form>
+                    <fieldset>
+                      <legend>Выберите размер</legend>
+                      <p>
+                        <input type="radio" name="size" id="size_1" value="small" />
+                        <label for="size_1">Маленький</label>
+                      </p>
+                      <p>
+                        <input type="radio" name="size" id="size_2" value="medium" />
+                        <label for="size_2">Средний</label>
+                      </p>
+                      <p>
+                        <input type="radio" name="size" id="size_3" value="large" />
+                        <label for="size_3">Большой</label>
+                      </p>
+                    </fieldset>
+                  </form>
+                  
+                  <form>
+                    <fieldset>
+                      <legend>Выберите тип начинки</legend>
+                      <p>
+                        <input type="radio" name="filling" id="filling_1" value="chocolate" />
+                        <label for="filling_1">Шоколадная</label>
+                      </p>
+                      <p>
+                        <input type="radio" name="filling" id="filling_2" value="strawberry" />
+                        <label for="filling_2">Клубничная</label>
+                      </p>
+                      <p>
+                        <input type="radio" name="filling" id="filling_3" value="vanilla" />
+                        <label for="filling_3">Ванильная</label>
+                      </p>
+                    </fieldset>
+                  </form>
+                  
+                  <form>
+                    <fieldset>
+                      <legend>Выберите вкус</legend>
+                      <p>
+                        <input type="radio" name="taste" id="taste_bisque" value="chocolate" />
+                        <label for="taste_bisque">Бисквитный</label>
+                      </p>
+                      <p>
+                        <input type="radio" name="taste" id="taste_2" value="strawberry" />
+                        <label for="taste_2">Клубничный</label>
+                      </p>
+                      <p>
+                        <input type="radio" name="taste" id="taste_3" value="vanilla" />
+                        <label for="taste_3">Ванильный</label>
+                      </p>
+                    </fieldset>
+                  </form>
+    
+    
+                  <form>
+                    <p>
+                      <label for="taste_1">Вишенка на торте</label>
+                      <input type="checkbox" id="taste_1" name="taste_cherry" value="1" />
+                    </p>
+                    <p>
+                      <label for="taste_2">I like banana</label>
+                      <input type="checkbox" id="taste_2" name="taste_banana" value="2" />
+                    </p>
+                    <p>
+                      <label for="taste_3">Заказать из любимого ресторана</label>
+                      <input type="checkbox" id="taste_3" name="taste" value="3" />
+                    </p>
+                  </form>
+                  
+    
+                <button id="closeModal">Close Modal</button>
+            </div>
+</div>
+
+    </div>
+</body>
+
+<script>
+
+    document.getElementById("openModal").addEventListener("click", function () {
+        document.getElementById("modal").style.display = "block";
+    });
+
+    document.getElementById("closeModal").addEventListener("click", function () {
+        document.getElementById("modal").style.display = "none";
+    });
+
+</script>
+
+</html>
